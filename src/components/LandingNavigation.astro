@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import logoImage from "./public/favicon.png";
 ---
 
 <script
@@ -16,10 +15,11 @@ import logoImage from "./public/favicon.png";
             >
                 <div class="flex flex-row items-center justify-between p-4">
                     <Image
-                        src={logoImage}
+                        src="/favicon.png"
                         class="object-contain h-9 w-9 mr-4"
                         alt="P2P Logo"
                         loading={"eager"}
+                        width="1" height="1" 
                     />
                     <a
                         href="/"
