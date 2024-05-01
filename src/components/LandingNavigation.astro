@@ -1,31 +1,35 @@
 ---
-
+import { Image } from "astro:assets";
+import logoImage from "./public/favicon.png";
 ---
 
 <script
     src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
     defer></script>
 
-<nav class="min-h-screen">
-    <div class="antialiased bg-gray-800">
+<nav class="mb-1">
+    <div class="antialiased bg-transparent">
         <div class="w-full text-white bg-transparent">
             <div
                 x-data="{ open: false }"
                 class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8"
             >
                 <div class="flex flex-row items-center justify-between p-4">
-                    <img
-                        src="/favicon.png"
+                    <Image
+                        src={logoImage}
                         class="object-contain h-9 w-9 mr-4"
+                        alt="P2P Logo"
+                        loading={"eager"}
                     />
                     <a
-                        href="#"
+                        href="/"
                         class="text-lg font-semibold tracking-widest text-slate-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
                         >P2P Transfer</a
                     >
                     <button
-                        class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+                        class="rounded-lg md:hidden focus:outline-none focus:shadow-outline transition-transform duration-300"
                         @click="open = !open"
+                        :class="{ 'rotate-90': open }"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -51,19 +55,23 @@
                 </div>
                 <nav
                     :class="{'flex': open, 'hidden': !open}"
-                    class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
+                    class="flex-col flex-grow hidden pb-4 md:flex md:justify-end md:flex-row animate-slide-in-top md:animate-none"
                 >
                     <a
-                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline"
-                        href="#">Home</a
+                        class="px-4 py-2 mt-2 text-sm font-semibold bg-gray-600 rounded-lg md:mt-0 md:ml-4 no-underline"
+                        href="/">Home</a
                     >
                     <a
-                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline"
+                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline hover:underline-offset-2"
                         href="#">About</a
                     >
                     <a
+                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline"
+                        href="#">Privacy</a
+                    >
+                    <a
                         class="text-black px-4 py-2 mt-2 text-sm font-semibold bg-white rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-gray-200"
-                        href="#">Log in</a
+                        href="#">Log In</a
                     >
                 </nav>
             </div>
