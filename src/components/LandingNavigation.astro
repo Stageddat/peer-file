@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+const { page } = Astro.props;
 ---
 
 <script
@@ -19,7 +20,8 @@ import { Image } from "astro:assets";
                         class="object-contain h-9 w-9 mr-4"
                         alt="SharePeer Logo"
                         loading={"eager"}
-                        width="1" height="1" 
+                        width="1"
+                        height="1"
                     />
                     <a
                         href="/"
@@ -58,16 +60,16 @@ import { Image } from "astro:assets";
                     class="flex-col flex-grow hidden pb-4 md:flex md:justify-end md:flex-row animate-slide-in-top md:animate-none"
                 >
                     <a
-                        class="px-4 py-2 mt-2 text-sm font-semibold bg-gray-600 rounded-lg md:mt-0 md:ml-4 no-underline"
+                        class={`px-4 py-2 mt-2 text-sm font-semibold rounded-lg md:mt-0 md:ml-4 no-underline ${page === "index" ? "bg-gray-600" : "bg-transparent"}`}
                         href="/">Home</a
                     >
                     <a
-                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline hover:underline-offset-2"
-                        href="#">About</a
+                        class={`px-4 py-2 mt-2 text-sm font-semibold rounded-lg md:mt-0 md:ml-4 no-underline ${page === "about" ? "bg-gray-600" : "bg-transparent"}`}
+                        href="/about">About</a
                     >
                     <a
-                        class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 no-underline hover:underline"
-                        href="#">Privacy</a
+                        class={`px-4 py-2 mt-2 text-sm font-semibold rounded-lg md:mt-0 md:ml-4 no-underline ${page === "privacy" ? "bg-gray-600" : "bg-transparent"}`}
+                        href="/privacy">Privacy</a
                     >
                     <a
                         class="text-black px-4 py-2 mt-2 text-sm font-semibold bg-white rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 hover:bg-gray-200"
