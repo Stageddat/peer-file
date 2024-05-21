@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<script>
+    import { getToken } from "../utils/login";
+    let userToken: string;
+    const token = getToken();
+    if (token !== null) {
+        userToken = token;
+        console.log(userToken);
+    }
+    console.log("No token found");
+</script>
+
+<Layout title="SharePeer" />
