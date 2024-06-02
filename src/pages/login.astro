@@ -74,6 +74,9 @@ import Layout from "../layouts/Layout.astro";
 
                             const data = await response.json();
                             console.log(data);
+                            if (data.message === "Login successful"){
+                                window.localStorage.setItem("TOKEN", data.token)
+                            }
                         } catch (error) {
                             console.error("Error logging in:", error);
                         }
