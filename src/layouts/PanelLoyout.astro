@@ -1,0 +1,41 @@
+---
+
+---
+
+<div class="text-white">
+    <h2>PeerJS File Sharing</h2>
+    <input type="file" id="fileInput" />
+    <input
+        type="text"
+        id="peerIdInput"
+        placeholder="Enter Peer ID to connect"
+    />
+    <button id="connectBtn">Connect & Send File</button>
+    <div id="messages"></div>
+</div>
+<script>
+    import { getPeerID } from "../utils/peer/getPeerID";
+    import { sendPeer } from "../utils/peer/sendPeer";
+    import "../utils/peer/incomeConn";
+
+    // Get DOM elements
+    const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+    const peerIdInput = document.getElementById("peerIdInput") as HTMLInputElement;
+    const connectBtn = document.getElementById("connectBtn") as HTMLButtonElement;
+    const messages = document.getElementById("messages") as HTMLDivElement;
+
+    // Get Peer ID
+    const peerID = await getPeerID();
+    if (messages) {
+        messages.innerHTML = `You peer ID is: ${peerID}`;
+    }
+
+    if (connectBtn) {
+        connectBtn.addEventListener("click", () => {
+            const requestPeerID = peerIdInput.value;
+            if (fileInput && fileInput.files) {
+                sendPeer(requestPeerID, fileInput)
+            }
+        });
+    }
+</script>
