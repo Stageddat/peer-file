@@ -1,0 +1,33 @@
+---
+---
+
+<form id="login-form">
+    <input type="email" id="email" placeholder="Email" required /><br>
+    <input type="password" id="password" placeholder="Password" required /><br>
+    <button type="submit">Login</button>
+    <script>
+        import { login } from "../utils/auth/login"
+        const loginForm = document.getElementById("login-form");
+        if (loginForm) {
+            loginForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const email = (
+                    document.getElementById("email") as HTMLInputElement
+                )?.value;
+                const password = (
+                    document.getElementById("password") as HTMLInputElement
+                )?.value;
+
+                if (email && password) {
+                    await login(email, password)
+                } else {
+                    console.error(
+                        "Email or password element is not found or empty."
+                    );
+                }
+            });
+        } else {
+            console.error("Login form is not found.");
+        }
+    </script>
+</form>
